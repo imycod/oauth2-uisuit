@@ -18,7 +18,6 @@ export const useAuthStore = defineStore({
     async login(username: string, password: string) {
       // 获取cookie
       const token = Cookies.get('token')
-      debugger
       let user = null
 
       if (!token) {
