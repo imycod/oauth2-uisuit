@@ -1,0 +1,26 @@
+{
+  "cookie": {
+    "originalMaxAge": null,
+    "expires": null,
+    "httpOnly": true,
+    "path": "/"
+  },
+  "passport": {
+    "user": "1"
+  },
+  "authorize": {
+    "1cD6MVoS": {
+      "protocol": "oauth2",
+      "client": "1",
+      "redirectURI": "http://127.0.0.1:3002/auth/example-oauth2orize/callback",
+      "req": {
+        "type": "code",
+        "clientID": "berry",
+        "redirectURI": "http://127.0.0.1:3002/auth/example-oauth2orize/callback",
+        "scope": [
+          "email"
+        ]
+      }
+    }
+  }
+}

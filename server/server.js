@@ -1,10 +1,12 @@
 (function () {
   "use strict";
 
+  const { redisStore } = require('./redis');
   var connect = require("connect"),
     path = require("path"),
     passport = require("passport"),
     User = require("./user"),
+
     ExampleStrategy = require("./passport-example/strategy").Strategy,
     app = connect(),
     server,
@@ -60,7 +62,7 @@
 
   function route(rest) {
     rest.get("/externalapi/account", function (req, res, next) {
-      console.log("[using accessToken]", req.user.accessToken);
+      console.log("[using accessToken]", req.session);
       if (false) {
         next();
       }
@@ -134,7 +136,10 @@
     .use(connect.urlencoded())
     .use(connect.compress())
     .use(connect.cookieParser())
-    .use(connect.session({ secret: "keyboard mouse" }))
+    .use(connect.session({
+      store: redisStore,
+      secret: "keyboard mouse"
+    }))
     .use(passport.initialize())
     .use(passport.session())
     .use(connect.router(route))
